@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>HR Employee Leave Management Tool</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 500px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+        }
+
+        h2 {
+            color: #2c3e50;
+        }
+
+        input, select, button {
+            width: 90%;
+            padding: 10px;
+            margin: 8px;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th {
+            background-color: #3498db;
+            color: white;
+        }
+
+        th, td {
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>HR Employee Leave Management Tool</h2>
+
+    <input type="text" id="empName" placeholder="Employee Name">
+
+    <select id="leaveType">
+        <option>Sick Leave</option>
+        <option>Casual Leave</option>
+        <option>Annual Leave</option>
+    </select>
+
+    <input type="date" id="fromDate">
+    <input type="date" id="toDate">
+
+    <button onclick="applyLeave()">Apply Leave</button>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Employee Name</th>
+                <th>Leave Type</th>
+                <th>From</th>
+                <th>To</th>
+            </tr>
+        </thead>
+        <tbody id="leaveTable"></tbody>
+    </table>
+</div>
+
+<script>
+function applyLeave() {
+    let name = document.getElementById("empName").value;
+    let type = document.getElementById("leaveType").value;
+    let from = document.getElementById("fromDate").value;
+    let to = document.getElementById("toDate").value;
+
+    if(name === "" || from === "" || to === "") {
+        alert("Please fill all fields");
+        return;
+    }
+
+    let table = document.getElementById("leaveTable");
+
+    let row = table.insertRow();
+
+    row.insertCell(0).innerHTML = name;
+    row.insertCell(1).innerHTML = type;
+    row.insertCell(2).innerHTML = from;
+    row.insertCell(3).innerHTML = to;
+
+    document.getElementById("empName").value = "";
+    document.getElementById("fromDate").value = "";
+    document.getElementById("toDate").value = "";
+}
+</script>
+
+</body>
+</html>
